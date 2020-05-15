@@ -20,7 +20,7 @@ if len(generate_nums) == 0:
     generate_nums.append("1")
 fold_pairs = []
 for i in range(5):
-    fold_file = open("data/roth_data/allArith/fold"+str(i)+".txt")
+    fold_file = open("data/roth_data/aggregate/fold"+str(i)+".txt")
     temp_fold = []
     for idx in fold_file:
         p = pairs[int(idx)]
@@ -82,7 +82,7 @@ for tim in range(times):
             loss_total = 0
             input_batches, input_lengths, output_batches, output_lengths, nums_batches, num_stack_batches, num_pos_batches, num_size_batches \
                 = prepare_train_batch(train_pairs, batch_size)
-            # print("epoch:", epoch+1)
+            print("epoch:", epoch + 1)
             start = time.time()
             for idx in range(len(input_lengths)):
                 loss = train_tree(input_batches[idx], input_lengths[idx], output_batches[idx], output_lengths[idx],
@@ -92,9 +92,9 @@ for tim in range(times):
 
                 # Keep track of loss
                 loss_total += loss
-            # print("loss:", loss_total / len(input_lengths))
-            # print("training time", time_since(time.time() - start))
-            # print("--------------------------------")
+            print("loss:", loss_total / len(input_lengths))
+            print("training time", time_since(time.time() - start))
+            print("--------------------------------")
         value_ac = 0
         equation_ac = 0
         eval_total = 0
