@@ -694,7 +694,7 @@ def prepare_data(pairs_trained, pairs_tested, trim_min_count, generate_nums, cop
         #                     pair[2], pair[3], num_stack, pair[4]))
         test_pairs.append((input_cell, len(input_cell), output_cell, len(output_cell),
                            pair[2], pair[3], num_stack))
-    print('Number of testind data %d' % (len(test_pairs)))
+    print('Number of testing data %d' % (len(test_pairs)))
     return input_lang, output_lang, train_pairs, test_pairs
 
 
@@ -761,7 +761,7 @@ def prepare_de_data(pairs_trained, pairs_tested, trim_min_count, generate_nums, 
         #                     pair[2], pair[3], num_stack, pair[4]))
         test_pairs.append((input_cell, len(input_cell), output_cell, len(output_cell),
                            pair[2], pair[3], num_stack))
-    print('Number of testind data %d' % (len(test_pairs)))
+    print('Number of testing data %d' % (len(test_pairs)))
     # the following is to test out_equation
     # counter = 0
     # for pdx, p in enumerate(train_pairs):
