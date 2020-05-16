@@ -14,13 +14,13 @@ beam_size = 5
 n_layers = 2
 times = 1
 
-data = load_roth_data("data/roth_data/questions.json")
+data = load_roth_data("data/roth_data/mwpdata/questions.json")
 pairs, generate_nums, copy_nums = transfer_roth_num(data)
 if len(generate_nums) == 0:
     generate_nums.append("1")
 fold_pairs = []
 for i in range(5):
-    fold_file = open("data/roth_data/aggregate/fold"+str(i)+".txt")
+    fold_file = open("data/roth_data/mwpdata/fold"+str(i)+".txt")
     temp_fold = []
     for idx in fold_file:
         p = pairs[int(idx)]
@@ -72,7 +72,7 @@ for tim in range(times):
         generate_num_ids = []
         for num in generate_nums:
             generate_num_ids.append(output_lang.word2index[num])
-        print("fold:", fold+1)
+        # print("fold:", fold+1)
         for epoch in range(n_epochs):
             encoder_scheduler.step()
             predict_scheduler.step()
@@ -119,6 +119,7 @@ for tim in range(times):
         # print("testing time", time_since(time.time() - start))
         print("------------------------------------------------------")
         best_acc_fold.append((equation_ac, value_ac, eval_total))
+        exit()
 
     a, b, c = 0, 0, 0
     for bl in range(len(best_acc_fold)):
