@@ -98,6 +98,29 @@ def from_infix_to_prefix(expression):
     res.reverse()
     return res
 
+def from_prefix_to_infix(pre_fix):
+    st = list()
+    operators = ["+", "-", "^", "*", "/"]
+    pre_fix = deepcopy(pre_fix)
+    pre_fix.reverse()
+    for p in pre_fix:
+        if p not in operators:
+            pos = re.search("\d+\(", p)
+            if pos:
+                st.append(str(p[pos.start(): pos.end() - 1] + "+" + p[pos.end() - 1:]))
+            elif p[-1] == "%":
+                st.append(str(float(p[:-1]) / 100))
+            else:
+                st.append(p)
+        elif p in operators and len(st) > 1:
+            a = st.pop()
+            b = st.pop()
+            st.append('(%s %s %s)' % (a, p, b))
+        else:
+            return None
+    if len(st) == 1:
+        return st.pop()
+    return None
 
 def out_expression_list(test, output_lang, num_list, num_stack=None):
     max_index = output_lang.n_words
