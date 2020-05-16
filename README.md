@@ -22,7 +22,11 @@ A Seq2Tree Neural Network containing top-down Recursive Neural Network and botto
 
 - Math23K: 
 ```
-python3 run_seq2tree.py
+python3 run_seq2tree_math23k.py
+```
+- Roth1K: 
+```
+python3 run_seq2tree_roth.py
 ```
 
 ## Results
